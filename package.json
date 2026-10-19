@@ -1,0 +1,37 @@
+{
+  "name": "raveanima",
+  "private": true,
+  "version": "0.2.0",
+  "description": "RaveAnima: desktop 2D vector design and animation editor, built for humans and AI agents",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "npm run test && npm run typecheck && npm run build -w @raveanima/player && npm run build -w @raveanima/headless && npm run build -w @raveanima/desktop",
+    "anima": "node packages/headless/dist/anima.js",
+    "raveanima": "node packages/headless/dist/anima.js",
+    "desktop": "npm run tauri -w @raveanima/desktop -- dev",
+    "desktop:build": "npm run tauri -w @raveanima/desktop -- build"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "esbuild": "^0.28.2",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  },
+  "author": "Dias Zhumagaliyev <hello@dias.now> (https://dias.now)",
+  "homepage": "https://github.com/vibecoderkz/raveanima",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vibecoderkz/raveanima.git"
+  }
+}

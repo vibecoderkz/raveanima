@@ -1,0 +1,119 @@
+{
+  "format": "anima",
+  "version": 1,
+  "name": "icon",
+  "width": 1024,
+  "height": 1024,
+  "background": "#00000000",
+  "fps": 60,
+  "seq": 3,
+  "nodes": {
+    "n1": {
+      "id": "n1",
+      "name": "Tile",
+      "parent": null,
+      "visible": true,
+      "locked": false,
+      "opacity": 1,
+      "transform": {
+        "x": 512,
+        "y": 512,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "originX": 0,
+        "originY": 0
+      },
+      "fill": {
+        "type": "solid",
+        "color": "#0a0a0b"
+      },
+      "stroke": null,
+      "type": "rect",
+      "width": 880,
+      "height": 880,
+      "cornerRadius": 200
+    },
+    "n2": {
+      "id": "n2",
+      "name": "Trail",
+      "parent": null,
+      "visible": true,
+      "locked": false,
+      "opacity": 1,
+      "transform": {
+        "x": 0,
+        "y": 0,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "originX": 0,
+        "originY": 0
+      },
+      "fill": {
+        "type": "none"
+      },
+      "stroke": {
+        "paint": {
+          "type": "solid",
+          "color": "#ffffff"
+        },
+        "width": 56,
+        "join": "round",
+        "cap": "round"
+      },
+      "type": "path",
+      "points": [
+        {
+          "x": 250,
+          "y": 700,
+          "inX": 0,
+          "inY": 0,
+          "outX": 60,
+          "outY": -260
+        },
+        {
+          "x": 600,
+          "y": 360,
+          "inX": -170,
+          "inY": -10,
+          "outX": 0,
+          "outY": 0
+        }
+      ],
+      "closed": false
+    },
+    "n3": {
+      "id": "n3",
+      "name": "Dot",
+      "parent": null,
+      "visible": true,
+      "locked": false,
+      "opacity": 1,
+      "transform": {
+        "x": 680,
+        "y": 380,
+        "rotation": 0,
+        "scaleX": 1,
+        "scaleY": 1,
+        "originX": 0,
+        "originY": 0
+      },
+      "fill": {
+        "type": "solid",
+        "color": "#FF3B2E"
+      },
+      "stroke": null,
+      "type": "ellipse",
+      "width": 250,
+      "height": 250
+    }
+  },
+  "root": [
+    "n1",
+    "n2",
+    "n3"
+  ],
+  "animations": [],
+  "activeAnimation": null
+}

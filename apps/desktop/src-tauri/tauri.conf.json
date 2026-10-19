@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "RaveAnima",
+  "version": "0.2.0",
+  "identifier": "now.dias.anima",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devUrl": "http://127.0.0.1:1420",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "RaveAnima",
+        "width": 1440,
+        "height": 900,
+        "minWidth": 1100,
+        "minHeight": 680,
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self' ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "appimage"],
+    "category": "GraphicsAndDesign",
+    "shortDescription": "2D vector design and animation for humans and AI agents",
+    "longDescription": "RaveAnima is a desktop editor for 2D vector graphics and keyframe animation. Every tool is a command that AI agents can run through MCP. Exports Lottie, MP4, GIF, WebM, SVG and PNG.",
+    "copyright": "Copyright (c) 2026 Dias Zhumagaliyev. MIT License. Developed by Dias Zhumagaliyev: https://dias.now",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
+  }
+}

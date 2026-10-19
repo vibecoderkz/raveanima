@@ -1,0 +1,27 @@
+{
+  "name": "@raveanima/headless",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "raveanima": "dist/anima.js",
+    "anima": "dist/anima.js"
+  },
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@raveanima/core": "*",
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "@napi-rs/canvas": "^1.0.11",
+    "zod": "^4.1.0"
+  },
+  "license": "MIT",
+  "author": "Dias Zhumagaliyev <hello@dias.now> (https://dias.now)",
+  "homepage": "https://github.com/vibecoderkz/raveanima",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vibecoderkz/raveanima.git",
+    "directory": "packages/headless"
+  }
+}

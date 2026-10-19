@@ -1,0 +1,131 @@
+feature,area,priority,original,clone,notes,source_url
+Artboards with preset or custom size,design,must,yes,no,multiple artboards per file; Lottie composition = one artboard,https://rive.app/docs/editor/fundamentals/artboards
+Artboard background fill and clip toggle,design,must,yes,no,,https://rive.app/docs/editor/fundamentals/artboards
+Rectangle tool with corner radius (per-corner),design,must,yes,no,maps to Lottie rc shape,https://rive.app/docs/editor/fundamentals/procedural-shapes
+Ellipse tool,design,must,yes,no,maps to Lottie el,https://rive.app/docs/editor/fundamentals/procedural-shapes
+Polygon and star tools (points/radius/inner angle),design,should,yes,no,maps to Lottie sr,https://rive.app/docs/editor/fundamentals/procedural-shapes
+Procedural shape properties stay editable and animatable,design,must,yes,no,width/height/radius keyed directly,https://rive.app/docs/editor/fundamentals/procedural-shapes
+Convert shape to editable path (Enter),design,must,yes,no,drops procedural animation,https://rive.app/docs/editor/fundamentals/procedural-shapes
+Pen tool (click straight / drag bezier),design,must,yes,no,P shortcut,https://rive.app/docs/editor/fundamentals/pen-tool-overview
+Edit vertices mode with handle types (straight/mirrored/detached/asymmetric),design,must,yes,no,,https://rive.app/docs/editor/fundamentals/edit-vertices
+Vertex corner radius on straight vertices,design,could,yes,no,needs baking for Lottie,https://rive.app/docs/editor/fundamentals/edit-vertices
+Open/close path and reverse direction,design,must,yes,no,,https://rive.app/docs/editor/fundamentals/edit-vertices
+Path simplify (tolerance/corner angle),design,could,yes,no,,https://rive.app/docs/editor/fundamentals/edit-vertices
+Shape layer holding multiple paths,design,must,yes,no,core model: shape = paints + paths,https://rive.app/docs/editor/fundamentals/shapes-and-paths-overview
+Shape builder (merge/subtract regions),design,could,yes,no,needs boolean path ops,https://rive.app/docs/editor/design/shape-builder
+Pencil tool (constant width freehand),design,could,yes,no,,https://rive.app/docs/editor/design/freehand-drawing
+Brush tool with variable width spines and pressure,design,could,yes,no,,https://rive.app/docs/editor/design/freehand-drawing
+Eraser tool,design,could,yes,no,,https://rive.app/docs/editor/design/freehand-drawing
+Bucket tool recolor solid fills,design,could,yes,no,,https://rive.app/docs/editor/design/bucket-tool
+Shape bend tool,design,could,yes,no,,https://rive.app/docs/editor/design/shape-bend-tool
+Multiple fills and strokes per shape with reorder and hide,design,must,yes,no,Lottie supports multiple fl/st,https://rive.app/docs/editor/fundamentals/fill-and-stroke
+Solid color fills and strokes,design,must,yes,no,,https://rive.app/docs/editor/fundamentals/fill-and-stroke
+Linear and radial gradients with stops,design,must,yes,no,Lottie gf/gs,https://rive.app/docs/editor/fundamentals/fill-and-stroke
+Color picker with hex and opacity,design,must,yes,no,,https://rive.app/docs/editor/fundamentals/fill-and-stroke
+Fill rule non-zero / even-odd,design,must,yes,no,Lottie r: 1/2,https://rive.app/docs/editor/fundamentals/fill-and-stroke
+Clockwise fill rule (Rive-specific),design,skip,yes,no,no Lottie equivalent,https://rive.app/docs/editor/fundamentals/fill-and-stroke
+Stroke width cap join,design,must,yes,no,,https://rive.app/docs/editor/fundamentals/fill-and-stroke
+Per-paint blend modes,design,should,yes,no,Lottie supports layer blend modes,https://rive.app/docs/editor/fundamentals/fill-and-stroke
+Vector feathering (soft edges),design,could,yes,no,no direct Lottie equivalent (blur effect approx),https://rive.app/docs/editor/fundamentals/fill-and-stroke
+Trim path start/end/offset sequential or synced,design,must,yes,no,Lottie tm; very common in Lottie work,https://rive.app/docs/editor/manipulating-shapes/trim-path
+Dashed strokes,design,should,yes,no,Lottie d array,https://rive.app/docs/editor/manipulating-shapes/trim-path
+Clipping with shapes and inverse clipping,design,should,yes,no,maps to Lottie masks/track mattes,https://rive.app/docs/editor/manipulating-shapes/clipping
+Groups and ungroup (Cmd+G / Cmd+Shift+G),design,must,yes,no,nested transform spaces,https://rive.app/docs/editor/fundamentals/groups
+Nested transform spaces (parenting),design,must,yes,no,Lottie parent/ks,https://rive.app/docs/editor/fundamentals/transform-spaces
+Freeze mode and origin/pivot editing,design,must,yes,no,Lottie anchor point,https://rive.app/docs/editor/fundamentals/freeze-and-origin
+Target-style groups (always selectable),design,could,yes,no,,https://rive.app/docs/editor/fundamentals/groups
+Solos (one child visible at a time),design,could,yes,no,bake to opacity holds in Lottie,https://rive.app/docs/editor/manipulating-shapes/solos
+Hierarchy tree with rename reparent visibility and draw order,design,must,yes,no,,https://rive.app/docs/editor/interface-overview/hierarchy
+Layer forward/backward/top/bottom,design,must,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Align and distribute with key object,design,should,yes,no,,https://rive.app/docs/editor/fundamentals/align-and-distribute
+Rulers ruler-guides grid rows columns,design,should,yes,no,editor-only not exported,https://rive.app/docs/editor/design/rulers-and-guides
+Snapping (toggle with modifier),design,should,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Select / translate / rotate / scale tools (V Q W E),design,must,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Marquee and shift multi-select,design,must,yes,no,,https://rive.app/docs/editor/interface-overview/selection-and-navigation
+Deep select and select-behind cycling,design,should,yes,no,,https://rive.app/docs/editor/interface-overview/selection-and-navigation
+Pan zoom fit-selection zoom-100,design,must,yes,no,,https://rive.app/docs/editor/interface-overview/selection-and-navigation
+Inspector with numeric transform fields,design,must,yes,no,,https://rive.app/docs/editor/interface-overview/inspector
+Undo redo,design,must,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Copy paste duplicate and copy/paste style,design,must,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Opacity in 10% steps via number keys,design,could,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Text tool auto-width / auto-height / fixed,design,should,yes,no,Lottie text layers are limited; consider convert-to-shapes,https://rive.app/docs/editor/text/text-overview
+Text overflow wrap alignment,design,could,yes,no,,https://rive.app/docs/editor/text/text-overview
+Text runs and styles,design,could,yes,no,,https://rive.app/docs/editor/text/text-runs
+Text modifiers (per-glyph range animation),design,could,yes,no,Lottie text animators partially,https://rive.app/docs/editor/text/text-modifiers
+Text follow path,design,could,yes,no,,https://rive.app/docs/editor/text/text-modifiers
+Convert text to shapes,design,should,yes,no,safest Lottie path,https://rive.app/docs/editor/text/text-overview
+Custom fonts and Google fonts,design,should,yes,no,,https://rive.app/docs/editor/text/fonts
+Raster image import (PNG JPG WebP),assets,should,yes,no,Lottie image assets,https://rive.app/docs/editor/fundamentals/assets-overview
+SVG import to native editable vectors (incl. paste from Figma),assets,must,yes,no,fastest way to get art in,https://rive.app/docs/editor/assets/svg
+PSD layered import,assets,could,yes,no,,https://rive.app/docs/editor/assets/psd
+Lottie import,assets,should,yes,no,Rive gates this to Enterprise; open win for Anima,https://rive.app/docs/editor/assets/lottie
+Flash/Animate FLA XFL import,assets,could,yes,no,,https://rive.app/docs/editor/fundamentals/assets-overview
+Audio assets and audio events,assets,could,yes,no,not in Lottie,https://rive.app/docs/editor/assets/audio
+Blob assets for scripts,assets,skip,yes,no,tied to Rive scripting,https://rive.app/docs/editor/fundamentals/assets-overview
+Components (reusable artboards / nested instances),design,should,yes,no,Lottie precomps,https://rive.app/docs/editor/fundamentals/components
+Responsive layouts (row column grid stack hug fill),design,could,yes,no,UI-centric; not in Lottie,https://rive.app/docs/editor/layouts/layouts-overview
+N-slicing,design,could,yes,no,,https://rive.app/docs/editor/layouts/n-slicing
+Scroll constraints,design,skip,yes,no,runtime UI feature,https://rive.app/docs/editor/constraints/scroll-constraint
+Design/Animate mode toggle (Tab),animate,must,yes,no,,https://rive.app/docs/editor/fundamentals/design-vs-animate-mode
+Auto-key when editing with a timeline selected,animate,must,yes,no,plus guard against accidental keys,https://rive.app/docs/editor/fundamentals/design-vs-animate-mode
+Multiple timelines (animations) per artboard,animate,must,yes,no,export one per Lottie file or markers,https://rive.app/docs/editor/animate-mode/timeline
+Loop types one-shot / loop / ping-pong,animate,must,yes,no,ping-pong baked for Lottie,https://rive.app/docs/editor/animate-mode/timeline
+Duration fps and key snapping (default 60/s),animate,must,yes,no,Lottie fr/ip/op,https://rive.app/docs/editor/animate-mode/timeline
+Work area,animate,should,yes,no,,https://rive.app/docs/editor/animate-mode/timeline
+Playback speed incl. negative,animate,could,yes,no,,https://rive.app/docs/editor/animate-mode/timeline
+Show only selected on timeline,animate,should,yes,no,,https://rive.app/docs/editor/animate-mode/timeline
+Key button per property (unkeyed / animated / keyed-here states),animate,must,yes,no,,https://rive.app/docs/editor/animate-mode/keys
+Move keys by drag (object row and property row),animate,must,yes,no,,https://rive.app/docs/editor/animate-mode/keys
+Copy paste keys between objects,animate,should,yes,no,,https://rive.app/docs/editor/animate-mode/keys
+Resize key selection (Alt drag) and stagger keys,animate,should,yes,no,,https://rive.app/docs/editor/animate-mode/keys
+Key all vertices (path morph keys),animate,must,yes,no,Lottie shape keyframes,https://rive.app/docs/editor/keyboard-shortcuts
+Playhead navigation shortcuts (frame step / jump to keys),animate,must,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Interpolation linear / hold / cubic,animate,must,yes,no,direct Lottie mapping,https://rive.app/docs/editor/animate-mode/interpolation-easing
+Cubic bezier easing editor with 4-number field,animate,must,yes,no,copy/paste CSS-style values,https://rive.app/docs/editor/animate-mode/interpolation-easing
+Default interpolation for new keys,animate,should,yes,no,,https://rive.app/docs/editor/animate-mode/interpolation-easing
+Elastic interpolation (amplitude/period),animate,should,yes,no,bake to keys for Lottie,https://rive.app/docs/editor/animate-mode/interpolation-easing
+Graph editor (value curves with cubic-value handles and overshoot),animate,should,yes,no,Lottie spatial/value bezier,https://rive.app/docs/editor/animate-mode/interpolation-easing
+Interpolation hotkeys F6-F10,animate,could,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Animate draw order rules (hold keys),animate,could,yes,no,hard in Lottie,https://rive.app/docs/editor/animate-mode/animating-draw-order
+Joysticks (scrub timelines via 2D handle),animate,could,yes,no,,https://rive.app/docs/editor/manipulating-shapes/joysticks
+Animation mixing (layered timelines),animate,could,yes,no,,https://rive.app/docs/editor/state-machine/layers
+State machine graph with entry/exit/any states,state machine,could,yes,no,not representable in Lottie; post-MVP,https://rive.app/docs/editor/state-machine/states
+Blend states 1D and direct,state machine,could,yes,no,,https://rive.app/docs/editor/state-machine/states
+Transitions with conditions duration exit-time interpolation,state machine,could,yes,no,,https://rive.app/docs/editor/state-machine/transitions
+Transition actions and randomized exits,state machine,could,yes,no,,https://rive.app/docs/editor/state-machine/transitions
+State machine layers,state machine,could,yes,no,,https://rive.app/docs/editor/state-machine/layers
+Listeners (pointer / keyboard / gamepad / view model change),state machine,could,yes,no,,https://rive.app/docs/editor/state-machine/listeners
+Events (open URL / audio),state machine,could,yes,no,,https://rive.app/docs/editor/events/overview
+Data binding with view models and typed properties,data,could,yes,no,,https://rive.app/docs/editor/data-binding/overview
+Converters (string template / range map / formula ...),data,skip,yes,no,runtime-centric,https://rive.app/docs/editor/data-binding/converters
+Bind key values to data,data,skip,yes,no,,https://rive.app/docs/editor/animate-mode/keys
+Bones and bone chains,rigging,could,yes,no,bake to transforms for Lottie,https://rive.app/docs/editor/manipulating-shapes/bones
+Vertex skinning with weights (weight tool),rigging,could,yes,no,bake to path keys for Lottie,https://rive.app/docs/editor/manipulating-shapes/bones
+Image meshes with auto-trace contour,rigging,could,yes,no,no Lottie equivalent,https://rive.app/docs/editor/manipulating-shapes/meshes
+IK constraint,rigging,could,yes,no,bake,https://rive.app/docs/editor/constraints/ik-constraint
+Transform / translation / rotation / scale / distance constraints,rigging,could,yes,no,bake,https://rive.app/docs/editor/constraints/constraints-overview
+Follow path constraint,rigging,should,yes,no,Lottie has auto-orient along motion path; bake otherwise,https://rive.app/docs/editor/constraints/follow-path-constraint
+Dependency graph overlay,rigging,could,yes,no,,https://rive.app/docs/editor/workflows/dependency-graph
+Luau scripting and WGSL shaders,scripting,skip,yes,no,large scope; not needed for Lottie,https://rive.app/docs/scripting/getting-started
+Export .riv for runtimes,export,could,yes,no,possible later via open format notes,https://rive.app/docs/editor/exporting/exporting-for-runtime
+Export Lottie JSON / dotLottie,export,must,no,no,Rive does not offer this; Anima's headline export,https://rive.app/pricing
+Export MP4 / WebM / GIF,export,should,yes,no,Rive renders in its cloud; Anima renders locally,https://rive.app/docs/editor/exporting/exporting-for-video-and-static-design
+Export PNG / SVG still and PNG/SVG sequence,export,should,yes,no,also the agent screenshot loop,https://rive.app/docs/editor/exporting/exporting-for-video-and-static-design
+Render presets and render queue,export,could,yes,no,,https://rive.app/docs/editor/exporting/exporting-for-video-and-static-design
+Local editable document file (save/open),files,must,partial,no,Rive is cloud-first; .rev backup is paid,https://rive.app/docs/editor/exporting/exporting-for-backup
+Autosave and named revisions,files,should,yes,no,Rive gates history to Cadet+,https://rive.app/docs/editor/fundamentals/revision-history
+File browser with recent files,files,should,yes,no,,https://rive.app/docs/editor/interface-overview/file-browser
+File tabs (multiple open files),files,should,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Realtime multiplayer collaboration,collaboration,skip,yes,no,cloud network,https://rive.app/pricing
+Libraries (publish/share components across files),collaboration,could,yes,no,Voyager+ in Rive,https://rive.app/docs/editor/libraries
+Hosted share and embed links,collaboration,skip,yes,no,needs hosting infra,https://rive.app/docs/editor/embed-urls/overview
+Marketplace,collaboration,skip,yes,no,community network,https://rive.app/docs/community/marketplace
+Keyboard shortcuts panel (Shift+/),ui,should,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Command search (Cmd+K),ui,should,yes,no,,https://rive.app/docs/editor/keyboard-shortcuts
+Accessibility semantics / focus / reduced motion authoring,ui,could,yes,no,runtime-oriented,https://rive.app/docs/editor/accessibility/semantics
+Agent API over MCP (local),ai,must,partial,no,Rive: desktop GUI only on Mac/Win at 127.0.0.1:9791; Anima: headless and cross-platform,https://rive.app/docs/editor/ai/mcp
+Headless CLI with verify / inspect / schema / screenshot,ai,must,partial,no,Rive CLI does this via RML text; Anima should do it on the native doc,https://rive.app/docs/cli/reference/commands
+Text/diffable document format for agents and git,ai,must,partial,no,Rive RML is text but the compiler is closed,https://rive.app/docs/runtimes/advanced-topic/rml
+Schema lookup of types and animatable properties,ai,should,yes,no,like rive schema --animatable,https://rive.app/docs/runtimes/advanced-topic/rml
+Agent instructions scaffolded into projects (AGENTS.md/CLAUDE.md),ai,should,yes,no,,https://rive.app/docs/cli/agents
+In-editor AI chat agent,ai,could,yes,no,Rive bills in credits,https://rive.app/docs/editor/ai-agent/ai-agent

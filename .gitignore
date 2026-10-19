@@ -1,0 +1,24 @@
+node_modules
+dist
+# The CLI / MCP bundle stays in git: README runs MCP straight from packages/headless/dist/anima.js
+!/packages/headless/dist/
+target
+*.log
+out/
+
+# Tauri regenerates these on every build
+apps/desktop/src-tauri/gen/
+
+# Apple SF Pro: its license does not allow redistribution. Put your own copy here (see README).
+apps/desktop/public/fonts/*.otf
+apps/desktop/public/fonts/*.ttf
+apps/desktop/public/fonts/*.woff
+apps/desktop/public/fonts/*.woff2
+
+# Local secrets and editor state
+.env
+.env.*
+*.pem
+*.key
+bridge.token
+.DS_Store

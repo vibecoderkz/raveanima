@@ -1,0 +1,19 @@
+{
+  "name": "@raveanima/player",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "RaveAnima web player: the <anima-player> web component plays .anima files with state machines on any web page",
+  "main": "dist/anima-player.js",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "license": "MIT",
+  "author": "Dias Zhumagaliyev <hello@dias.now> (https://dias.now)",
+  "homepage": "https://github.com/vibecoderkz/raveanima",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vibecoderkz/raveanima.git",
+    "directory": "packages/player"
+  }
+}

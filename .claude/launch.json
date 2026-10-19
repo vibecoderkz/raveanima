@@ -1,0 +1,6 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "anima-ui", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev", "-w", "@raveanima/desktop"], "port": 1420 }
+  ]
+}

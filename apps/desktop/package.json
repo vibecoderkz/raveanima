@@ -1,0 +1,33 @@
+{
+  "name": "@raveanima/desktop",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit -p . && vite build",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@raveanima/core": "*",
+    "@tauri-apps/api": "^2.8.0",
+    "@tauri-apps/plugin-dialog": "^2.4.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.8.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "vite": "^8.3.4"
+  },
+  "license": "MIT",
+  "author": "Dias Zhumagaliyev <hello@dias.now> (https://dias.now)",
+  "homepage": "https://github.com/vibecoderkz/raveanima",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vibecoderkz/raveanima.git",
+    "directory": "apps/desktop"
+  }
+}
