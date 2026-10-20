@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand/readme-banner-dark.png">
+    <img src="brand/readme-banner-light.png" alt="RaveAnima: a keyframe diamond with anime eyes" width="100%">
+  </picture>
+</p>
+
 # RaveAnima
 
 Desktop editor for 2D vector design and keyframe animation, built so that people and AI agents use the same tools.
