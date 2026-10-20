@@ -33,3 +33,10 @@
 - A parallel sub-agent wrote the SVG importer against a fixed interface while I built the renderer; it worked first try because the contract (`parseSvg → nodes`) was set up front.
 - Crossfading between states needs both poses computed from the rest pose; blending from the "current" document left properties stuck when the target state had no animation.
 - The editor preview reuses the same `StateMachineRuntime` as the web player and `sm.simulate`, so one code path is tested three ways (agent, editor, browser).
+
+## 2026-10-19 — логотип DZ как первый реальный проект
+- Знак DZ (3 контура, анимация сборки, цикл загрузки, state machine intro/hover) собран одним скриптом только из команд (`design/dias-now-logo/out/motion/build-motion.mts`), полная пересборка со всеми экспортами около 50 с. Геометрия с дугами сошлась с эталонным SVG до уровня антиалиасинга; `import.svg` дал те же bounds, что и свой конвертер дуг.
+- Брендовые цвета вскрыли то, чего не видно на тестовых сценах: mp4/mov кодируются матрицей BT.601 без тегов (#3A2CFF в плеере выходит как #3738FF); GIF получает задержки 10/20 мс при fps 60 (браузеры растягивают 1 cs до 100 мс); Lottie из прозрачного холста содержит непрозрачный слой Background (lottie-web рисует чёрный). Обход: кадры через `export .png --time`, свой ffmpeg с BT.709, вычистка слоя из JSON.
+- `sheet --keys` берёт только времена ключей и их середины, поэтому быстрый перелёт (cubic-bezier 0.16,1,0.3,1: 95% хода за 100 мс) в него не попал; пришлось делать вариант документа с короткой шкалой. Нужны `--from/--to` или список времён.
+- Слушатели state machine на группе дают leave+enter при переходе курсора между детьми (Hover, Idle, Hover, анимация стартует заново); лечится одним прозрачным rect поверх всего знака (hit-test берёт верхний узел, opacity 0 не ловится, а fill с нулевой альфой ловится).
+- Проверка глазами по плотному листу и пиксельное сравнение с эталонным SVG заняли меньше времени, чем поиск причин в коде: именно рендер показал, что у overshoot из ТЗ эффект "зажатого" шва держится около 280 мс (ease почти мгновенный, 6 ед. хода сидят до 360 мс).
