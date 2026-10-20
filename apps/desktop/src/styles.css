@@ -198,14 +198,18 @@ select.sel:hover { border-color: var(--line2); }
 .play { width: 30px; height: 30px; border-radius: 50%; border: 0; display: grid; place-items: center; background: var(--ink); color: #fff; transition: transform 0.15s var(--ease); }
 .play:active { transform: scale(0.92); }
 .play svg { fill: currentColor; }
-.tnames { overflow: hidden; border-right: 1px solid var(--line); }
-.tlanes { position: relative; overflow: hidden; }
+/* rows scroll vertically in one container; lanes always span the full width */
+.tbody { grid-column: 1 / -1; display: grid; grid-template-columns: 248px 1fr; align-items: start; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; }
+.tnames { border-right: 1px solid var(--line); min-height: 100%; align-self: stretch; }
+.tnames-head { position: sticky; top: 0; z-index: 2; height: 22px; border-bottom: 1px solid var(--line); background: var(--bg); }
+.tlanes { position: relative; overflow: clip; min-height: 100%; } /* clip, not hidden: hidden would make lanes its own scroller and the sticky ruler would stick to it */
 .trow { height: 26px; display: flex; align-items: center; gap: 6px; padding: 0 10px 0 14px; border-bottom: 1px solid #f3f3f1; white-space: nowrap; overflow: hidden; }
 .trow.node { font-weight: 600; background: #fbfbfa; }
 .trow.prop { color: var(--muted); padding-left: 30px; }
 .trow.sel { color: var(--accent); }
-.ruler { position: absolute; left: 0; right: 0; top: 0; height: 22px; border-bottom: 1px solid var(--line); cursor: ew-resize; background: var(--bg); z-index: 2; }
+.ruler { position: sticky; top: 0; height: 22px; border-bottom: 1px solid var(--line); cursor: ew-resize; background: var(--bg); z-index: 2; }
 .lanes-canvas { position: absolute; inset: 0; }
+.playhead-cap { position: absolute; top: 0; width: 11px; height: 11px; border-radius: 0 0 6px 6px; background: var(--accent); pointer-events: none; z-index: 1; }
 .ease-pop { position: absolute; right: 12px; bottom: 12px; z-index: 5; width: 236px; padding: 12px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); box-shadow: var(--shadow-deep); animation: rise 0.2s var(--ease); }
 .ease-pop .h { padding: 0 0 10px; }
 .ease-pop svg.curve { width: 100%; height: 150px; display: block; margin-top: 10px; border-radius: 10px; background: var(--bg2); overflow: visible; touch-action: none; }

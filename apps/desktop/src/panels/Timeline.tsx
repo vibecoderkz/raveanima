@@ -169,81 +169,83 @@ export function Timeline() {
           <span style={{ color: "var(--muted)" }}>No animation yet</span>
         )}
       </div>
-      <div className="tnames">
-        <div style={{ height: 22, borderBottom: "1px solid var(--line)" }} />
-        {rows.map((r) =>
-          r.kind === "node" ? (
-            <div key={r.nodeId} className={`trow node ${editor.state.selection.includes(r.nodeId) ? "sel" : ""}`} onClick={() => run("select.set", { ids: [r.nodeId] })}>
-              {doc.nodes[r.nodeId]?.name}
-            </div>
-          ) : (
-            <div key={r.nodeId + r.prop} className={`trow prop ${sk?.nodeId === r.nodeId && sk.prop === r.prop ? "sel" : ""}`}>
-              {PROP_LABEL[r.prop] ?? r.prop}
-              <span className="spacer" />
-              <button
-                className="keybtn"
-                title="Remove track"
-                style={{ color: "var(--faint)" }}
-                onClick={() => run("track.delete", { nodeId: r.nodeId, prop: r.prop })}
-              >
-                <Icon name="x" size={12} />
-              </button>
-            </div>
-          ),
-        )}
-      </div>
-      <div className="tlanes" ref={lanes} onPointerDown={scrub}>
-        <div className="ruler">
-          {Array.from({ length: ticks + 1 }, (_, i) => {
-            const t = (dur * i) / ticks;
-            return (
-              <span key={i} style={{ position: "absolute", left: tx(t), top: 0, height: 22, borderLeft: "1px solid var(--line2)", paddingLeft: 4, fontSize: 10, lineHeight: "22px", color: "var(--faint)", fontVariantNumeric: "tabular-nums" }}>
-                {t.toFixed(t % 1 === 0 ? 0 : 1)}s
-              </span>
-            );
-          })}
+      {/* names and lanes share one scroller, so a single scrollbar moves both columns; the ruler sticks */}
+      <div className="tbody">
+        <div className="tnames">
+          <div className="tnames-head" />
+          {rows.map((r) =>
+            r.kind === "node" ? (
+              <div key={r.nodeId} className={`trow node ${editor.state.selection.includes(r.nodeId) ? "sel" : ""}`} onClick={() => run("select.set", { ids: [r.nodeId] })}>
+                {doc.nodes[r.nodeId]?.name}
+              </div>
+            ) : (
+              <div key={r.nodeId + r.prop} className={`trow prop ${sk?.nodeId === r.nodeId && sk.prop === r.prop ? "sel" : ""}`}>
+                {PROP_LABEL[r.prop] ?? r.prop}
+                <span className="spacer" />
+                <button
+                  className="keybtn"
+                  title="Remove track"
+                  style={{ color: "var(--faint)" }}
+                  onClick={() => run("track.delete", { nodeId: r.nodeId, prop: r.prop })}
+                >
+                  <Icon name="x" size={12} />
+                </button>
+              </div>
+            ),
+          )}
         </div>
-        {!anim && (
-          <div className="tl-empty">
-            <div>
-              <b style={{ color: "var(--ink)", font: "600 14px SFD" }}>Bring it to life</b>
-              <br />
-              Press <span className="kbd">Tab</span> for Animate mode, move the playhead, then change anything.
-            </div>
+        <div className="tlanes" ref={lanes} onPointerDown={scrub} style={{ height: 22 + rows.length * ROW }}>
+          <div className="ruler">
+            {Array.from({ length: ticks + 1 }, (_, i) => {
+              const t = (dur * i) / ticks;
+              return (
+                <span key={i} style={{ position: "absolute", left: tx(t), top: 0, height: 22, borderLeft: "1px solid var(--line2)", paddingLeft: 4, fontSize: 10, lineHeight: "22px", color: "var(--faint)", fontVariantNumeric: "tabular-nums" }}>
+                  {t.toFixed(t % 1 === 0 ? 0 : 1)}s
+                </span>
+              );
+            })}
+            {anim && <div className="playhead-cap" style={{ left: tx(time) - 5 }} />}
           </div>
-        )}
-        {anim && rows.length === 0 && <div className="tl-empty">Select a layer and press <span className="kbd">K</span>, or edit it in Animate mode.</div>}
-        <div style={{ position: "absolute", top: 22, left: 0, right: 0 }}>
-          {rows.map((r, i) => (
-            <div key={i} style={{ position: "absolute", top: i * ROW, left: 0, right: 0, height: ROW, borderBottom: "1px solid #f3f3f1", background: r.kind === "node" ? "#fbfbfa" : undefined }}>
-              {r.kind === "node"
-                ? r.times.map((t) => <span key={t} style={{ position: "absolute", left: tx(t) - 3, top: ROW / 2 - 3, width: 6, height: 6, borderRadius: 2, background: "var(--faint)", transform: "rotate(45deg)" }} />)
-                : anim!.tracks
-                    .find((t) => t.nodeId === r.nodeId && t.prop === r.prop)
-                    ?.keys.map((k, ki, arr) => {
-                      const on = sk?.nodeId === r.nodeId && sk.prop === r.prop && Math.abs(sk.time - k.time) < 1e-6;
-                      const next = arr[ki + 1];
-                      return (
-                        <span key={k.time}>
-                          {next && <span style={{ position: "absolute", left: tx(k.time), width: tx(next.time) - tx(k.time), top: ROW / 2 - 1, height: 2, background: k.ease === "hold" ? "repeating-linear-gradient(90deg,#ff3b2e55 0 4px,transparent 4px 8px)" : "#ff3b2e33" }} />}
-                          <span
-                            onPointerDown={(e) => dragKey(e, r.nodeId, r.prop, k.time)}
-                            title={`${k.time.toFixed(2)}s · ${typeof k.ease === "string" ? k.ease : "custom"}`}
-                            style={{ position: "absolute", left: tx(k.time) - 7, top: ROW / 2 - 7, width: 14, height: 14, color: on ? "var(--ink)" : "var(--accent)", display: "grid", placeItems: "center", cursor: "grab" }}
-                          >
-                            <span style={{ width: 11, height: 11, display: "block" }}>
-                              <Diamond />
+          {!anim && (
+            <div className="tl-empty">
+              <div>
+                <b style={{ color: "var(--ink)", font: "600 14px SFD" }}>Bring it to life</b>
+                <br />
+                Press <span className="kbd">Tab</span> for Animate mode, move the playhead, then change anything.
+              </div>
+            </div>
+          )}
+          {anim && rows.length === 0 && <div className="tl-empty">Select a layer and press <span className="kbd">K</span>, or edit it in Animate mode.</div>}
+          <div style={{ position: "absolute", top: 22, left: 0, right: 0 }}>
+            {rows.map((r, i) => (
+              <div key={i} style={{ position: "absolute", top: i * ROW, left: 0, right: 0, height: ROW, borderBottom: "1px solid #f3f3f1", background: r.kind === "node" ? "#fbfbfa" : undefined }}>
+                {r.kind === "node"
+                  ? r.times.map((t) => <span key={t} style={{ position: "absolute", left: tx(t) - 3, top: ROW / 2 - 3, width: 6, height: 6, borderRadius: 2, background: "var(--faint)", transform: "rotate(45deg)" }} />)
+                  : anim!.tracks
+                      .find((t) => t.nodeId === r.nodeId && t.prop === r.prop)
+                      ?.keys.map((k, ki, arr) => {
+                        const on = sk?.nodeId === r.nodeId && sk.prop === r.prop && Math.abs(sk.time - k.time) < 1e-6;
+                        const next = arr[ki + 1];
+                        return (
+                          <span key={k.time}>
+                            {next && <span style={{ position: "absolute", left: tx(k.time), width: tx(next.time) - tx(k.time), top: ROW / 2 - 1, height: 2, background: k.ease === "hold" ? "repeating-linear-gradient(90deg,#ff3b2e55 0 4px,transparent 4px 8px)" : "#ff3b2e33" }} />}
+                            <span
+                              onPointerDown={(e) => dragKey(e, r.nodeId, r.prop, k.time)}
+                              title={`${k.time.toFixed(2)}s · ${typeof k.ease === "string" ? k.ease : "custom"}`}
+                              style={{ position: "absolute", left: tx(k.time) - 7, top: ROW / 2 - 7, width: 14, height: 14, color: on ? "var(--ink)" : "var(--accent)", display: "grid", placeItems: "center", cursor: "grab" }}
+                            >
+                              <span style={{ width: 11, height: 11, display: "block" }}>
+                                <Diamond />
+                              </span>
                             </span>
                           </span>
-                        </span>
-                      );
-                    })}
-            </div>
-          ))}
+                        );
+                      })}
+              </div>
+            ))}
+          </div>
+          {anim && <div style={{ position: "absolute", top: 0, bottom: 0, left: tx(time), width: 1.5, background: "var(--accent)", pointerEvents: "none", zIndex: 3 }} />}
         </div>
-        {anim && <div style={{ position: "absolute", top: 0, bottom: 0, left: tx(time), width: 1.5, background: "var(--accent)", pointerEvents: "none", zIndex: 3 }}>
-          <div style={{ position: "absolute", top: 0, left: -5, width: 11, height: 11, borderRadius: "0 0 6px 6px", background: "var(--accent)" }} />
-        </div>}
       </div>
       {sk && selKey && <EasePopover ease={selKey.ease} label={`${doc.nodes[sk.nodeId]?.name} · ${PROP_LABEL[sk.prop] ?? sk.prop} · ${sk.time.toFixed(2)}s`} onEase={(ease, key) => run("keyframe.setEase", { ...sk, ease }, key)} onDelete={() => (run("keyframe.delete", sk), setUi({ selectedKey: null }))} onClose={() => setUi({ selectedKey: null })} />}
     </section>
